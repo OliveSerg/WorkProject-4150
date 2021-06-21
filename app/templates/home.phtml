@@ -1,0 +1,47 @@
+<table class="table">
+    <thead class="thead-primary">
+        <tr>
+            <th scope="col">SSN</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($employees as $employee) {
+        ?>
+            <tr>
+                <th scope="row"><?= $employee->Ssn; ?></th>
+                <td><?= $employee->Fname . " " . $employee->Lname; ?></td>
+                <td><?= $employee->Address; ?></td>
+                <td><?= $employee->Salary; ?></td>
+                <td><?= "Add" ?></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+<form class="container border" method="post" action="/">
+    <div class="form-group">
+        <label for="ssn">Enter Employee Social Security Number:</label>
+        <input type="text" class="form-control" name="ssn">
+    </div>
+    <div class="form-group">
+        <label for="lname">Employee Last name is:</label>
+        <input type="text" class="form-control" name="lname">
+    </div>
+    <div class="form-group">
+        <label for="fname">Employee First name is:</label>
+        <input type="text" class="form-control" name="fname">
+    </div>
+    <div class="form-group">
+        <label for="address">Employee Address is:</label>
+        <input type="text" class="form-control" name="address">
+    </div>
+    <div class="form-group">
+        <label for="salary">Employee Salary is:</label>
+        <input type="text" class="form-control" name="salary">
+    </div>
+    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+</form>

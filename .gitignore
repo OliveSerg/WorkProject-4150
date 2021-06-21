@@ -1,0 +1,5 @@
+.env
+.htaccess
+controller.php
+model.php
+template.php
