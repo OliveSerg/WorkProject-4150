@@ -14,7 +14,7 @@ $config = [
     'pass' => $_ENV['DB_PASSWORD']
 ];
 
-$app = new WebApp(dirname(__DIR__), $config);
+$app = new WebApp(dirname(__FILE__), $config);
 
 //All the routes
 $app->router->add('/', [\controllers\Home::class, 'get']);

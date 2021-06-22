@@ -2,22 +2,49 @@
 
 namespace general;
 
-use \general\WebApp;
+use \general\Query;
 
 abstract class Model {
 
+    protected $table = '';
     protected $attributes = [];
-    protected $query;
+    protected Query $query;
 
-    public function __construct($tableName) {
+    public function __construct($tableName = '') {
         $this->query = new Query($tableName);
     }
 
-    public static function find($id) {
-        $this->query->where($this->)
+    private function _find($id) {
+        $this->query->setType('single');
+        $data = $this->query->where($this->attributes['primarykey'], $id)
+            ->select();
+        $this->loadData($data);
+        return $this;
     }
 
-    public static function findAll($cond) {
+    public static function find($id) {
+        $instance = new static;
+        $instance->setTable($instance->getTable());
+        return $instance->_find($id);
+    }
+
+    private function _findAll($cond = []) {
+        // TODO:: ADD condition
+        $list = [];
+        $this->query->setType('collection');
+        $data = $this->query->select();
+
+        foreach ($data as $entity) {
+            $obj = new $this($this->table);
+            $list[] = $obj->loadData($entity);
+        }
+        return $list;
+    }
+
+    public static function findAll($cond = []) {
+        $instance = new static;
+        $instance->setTable($instance->getTable());
+        return $instance->_findAll($cond);
     }
 
     public function loadData($data) {
@@ -26,6 +53,7 @@ abstract class Model {
                 $this->{$key} = $value;
             }
         }
+        return $this;
     }
 
     public function getData($key) {
@@ -37,5 +65,14 @@ abstract class Model {
 
     public function getAttributes() {
         return $this->attributes;
+    }
+
+    public function getTable() {
+        return $this->table;
+    }
+
+    public function setTable($tableName) {
+        $this->table = $tableName;
+        $this->query->setTable($tableName);
     }
 }

@@ -18,6 +18,7 @@ class Employee extends Model {
 
     public function __construct() {
         $this->table = "EMPLOYEE";
-        $this->attributes = ['Fname', 'Minit', 'Lname', 'Ssn', 'Bdate', 'Address', 'Sex', 'Salary', 'Super_ssn', 'Dno'];
+        $this->attributes = ['primarykey' => 'Ssn', 'Fname', 'Minit', 'Lname',  'Bdate', 'Address', 'Sex', 'Salary', 'Super_ssn', 'Dno'];
+        parent::__construct($this->table);
     }
 }

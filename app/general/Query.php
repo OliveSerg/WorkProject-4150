@@ -67,20 +67,21 @@ class Query {
     // }
 
     public function where($column, $value, $type = '') {
-        $this->_where[] = [
+        $this->where[] = [
             'column' => $column,
             'value' => $value,
             'type' => $type
         ];
+        return $this;
     }
 
     private function _buildWhere() {
         if ($this->where) {
-            $this->sql += ' WHERE';
+            $this->sql .= ' WHERE';
 
             foreach ($this->where as $clause) {
                 $varName = ':' . $clause['column'];
-                $this->sql += ' ' . $clause['type'] . ' ' . $clause['column'] . ' = ' . $varName;
+                $this->sql .= ' ' . $clause['type'] . ' ' . $clause['column'] . ' = ' . $varName;
                 $this->params[$varName] = $clause['value'];
             }
         }
@@ -92,14 +93,15 @@ class Query {
             'table' => $table,
             'onCond' => $onCond
         ];
+        return $this;
     }
 
     private function _buildJoin() {
         if ($this->join) {
             foreach ($this->join as $clause) {
-                $this->sql += ' ' . strtoupper($clause['type']) . ' JOIN ' . $join['table'];
+                $this->sql .= ' ' . strtoupper($clause['type']) . ' JOIN ' . $join['table'];
                 if ($clause['onCond']) {
-                    $this->sql += ' ON (' . $clause['onCond'] . ')';
+                    $this->sql .= ' ON (' . $clause['onCond'] . ')';
                 }
             }
         }
@@ -110,15 +112,16 @@ class Query {
             'column' => $column,
             'direction' => $direction
         ];
+        return $this;
     }
 
     private function _buildOrderBy() {
         if ($this->orderBy) {
-            $this->sql += ' ORDER BY ';
+            $this->sql .= ' ORDER BY ';
             for ($i = 0; $i < sizeof($this->orderBy); $i++) {
-                $this->sql += $this->orderBy[$i]['column'] . ' ' . $this->orderBy[$i]['direction'];
+                $this->sql .= $this->orderBy[$i]['column'] . ' ' . $this->orderBy[$i]['direction'];
                 if ($i < sizeof($this->orderBy) - 1) {
-                    $this->sql += ', ';
+                    $this->sql .= ', ';
                 }
             }
         }
@@ -126,5 +129,9 @@ class Query {
 
     public function setTable($tableName) {
         $this->tableName = $tableName;
+    }
+
+    public function setType($type) {
+        $this->sqlType = $type;
     }
 }
