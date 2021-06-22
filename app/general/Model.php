@@ -28,10 +28,14 @@ abstract class Model {
         return $instance->_find($id);
     }
 
-    private function _findAll($cond = []) {
-        // TODO:: ADD condition
+    private function _findAll($conds = []) {
         $list = [];
         $this->query->setType('collection');
+        if ($conds) {
+            foreach ($conds as $cond) {
+                $this->query->where($cond['column'], $cond['value'], $cond['type']);
+            }
+        }
         $data = $this->query->select();
 
         foreach ($data as $entity) {

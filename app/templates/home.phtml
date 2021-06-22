@@ -13,7 +13,7 @@
         foreach ($employees as $employee) {
         ?>
             <tr>
-                <th scope="row"><?= $employee->Ssn; ?></th>
+                <th scope="row"><a href="/employee?ssn=<?= $employee->Ssn ?>"><?= $employee->Ssn; ?></a></th>
                 <td><?= $employee->Fname . " " . $employee->Lname; ?></td>
                 <td><?= $employee->Address; ?></td>
                 <td><?= $employee->Salary; ?></td>

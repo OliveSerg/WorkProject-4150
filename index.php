@@ -20,5 +20,6 @@ $app = new WebApp(dirname(__FILE__), $config);
 $app->router->add('/', [\controllers\Home::class, 'get']);
 $app->router->add('/', [\controllers\Home::class, 'post']);
 $app->router->add('/employee', [\controllers\Employees::class, 'get']);
+$app->router->add('/employees', [\controllers\Employees::class, 'get']);
 
 echo $app->router->run();

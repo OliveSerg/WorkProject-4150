@@ -3,6 +3,7 @@
 namespace general;
 
 class Query {
+    private $defautTable;
     protected $tableName;
     protected $sql;
     protected $params;
@@ -13,11 +14,12 @@ class Query {
 
     public function __construct($tableName) {
         $this->tableName = $tableName;
+        $this->defautTable = $tableName;
     }
 
     public function _init() {
         $this->sql = '';
-        $this->tableName = '';
+        $this->tableName = $this->defautTable;
         $this->sqlType = '';
         $this->params = [];
         $this->where = [];
@@ -99,7 +101,7 @@ class Query {
     private function _buildJoin() {
         if ($this->join) {
             foreach ($this->join as $clause) {
-                $this->sql .= ' ' . strtoupper($clause['type']) . ' JOIN ' . $join['table'];
+                $this->sql .= ' ' . strtoupper($clause['type']) . ' JOIN ' . $clause['table'];
                 if ($clause['onCond']) {
                     $this->sql .= ' ON (' . $clause['onCond'] . ')';
                 }
