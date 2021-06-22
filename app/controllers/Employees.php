@@ -7,8 +7,12 @@ use \models\Employee;
 
 class Employees extends Controller {
     public function get($req, $res) {
-        $emp = Employee::find('123456789');
-        var_dump($emp);
-        exit;
+        if ($req->getBody()) {
+            $employee = Employee::find($req->getBody()['ssn']);
+            return $this->render('employee', ['employee' => $employee]);
+        } else {
+            $employees = Employee::findAll();
+            return $this->render('home', ['employees' => $employees]);
+        }
     }
 }

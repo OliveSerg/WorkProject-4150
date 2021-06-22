@@ -21,4 +21,8 @@ class Employee extends Model {
         $this->attributes = ['primarykey' => 'Ssn', 'Fname', 'Minit', 'Lname',  'Bdate', 'Address', 'Sex', 'Salary', 'Super_ssn', 'Dno'];
         parent::__construct($this->table);
     }
+
+    public function getFullName() {
+        return $this->Fname . ' ' . $this->Lname;
+    }
 }
