@@ -1,51 +1,62 @@
-<table class="table">
-    <thead class="thead-primary">
-        <tr>
-            <th scope="col">SSN</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Salary</th>
-            <th scope="col">Options</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($employees as $employee) {
-        ?>
-            <tr>
-                <th scope="row"><a href="/employee?ssn=<?= $employee->Ssn ?>"><?= $employee->Ssn; ?></a></th>
-                <td><?= $employee->Fname . " " . $employee->Lname; ?></td>
-                <td><?= $employee->Address; ?></td>
-                <td><?= $employee->Salary; ?></td>
-                <td><?= "Add" ?></td>
-            </tr>
-        <?php } ?>
-    </tbody>
-</table>
-<form class="container border" method="post" action="/employee">
-    <div class="form-group">
-        <label for="ssn">Enter Employee Social Security Number:</label>
-        <input type="text" class="form-control" name="Ssn">
+<div class="home my-3">
+    <div>
+        <h1 class="display-1">Welcome to The Company!</h1>
+        <p class="lead">This is a test website for COMP 4150. Here to can test the relations of the Company schema through the main tables Employee, Projects, and Departments</p>
     </div>
-    <div class="form-group">
-        <label for="lname">Employee Last name is:</label>
-        <input type="text" class="form-control" name="Lname">
+    <div class="row gutters-sm">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <a class="btn text-white" href="/employees">
+                        <h5 class="card-title fw-bold">Check out all the Employees</h5>
+                        <p class="card-text">Click here to see all the current employees of the Company and add or update ones</p>
+                    </a>
+                    <form class="row mt-3" method="post" action="/">
+                        <div class="col-auto">
+                            <label class="col-form-label fw-bold" for="employee">Search:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" name="employee" placeholder="Or search for one by SSN:">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <a class="btn text-white" href="/projects">
+                        <h5 class="card-title fw-bold">Check out all the Projects</h5>
+                        <p class="card-text">Click here to see all the current projects of the Company and add or update ones</p>
+                    </a>
+                    <form class="row mt-3" method="post" action="/">
+                        <div class="col-auto">
+                            <label class="col-form-label fw-bold" for="project">Search:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" name="project" placeholder="Or search for one by Pnumber:">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-secondary text-white">
+                <div class="card-body text-center">
+                    <a class="btn text-white" href="/departments">
+                        <h5 class="card-title fw-bold">Check out all the Departments</h5>
+                        <p class="card-text">Click here to see all the current departments of the Company and add or update ones</p>
+                    </a>
+                    <form class="row mt-3" method="post" action="/">
+                        <div class="col-auto">
+                            <label class="col-form-label fw-bold" for="department">Search:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" name="department" placeholder="Or search for one by Dnumber:">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="fname">Employee First name is:</label>
-        <input type="text" class="form-control" name="Fname">
-    </div>
-    <div class="form-group">
-        <label for="address">Employee Address is:</label>
-        <input type="text" class="form-control" name="Address">
-    </div>
-    <div class="form-group">
-        <label for="salary">Employee Salary is:</label>
-        <input type="text" class="form-control" name="Salary">
-    </div>
-    <div class="form-group">
-        <label for="salary">Department Number is:</label>
-        <input type="text" class="form-control" name="Dno">
-    </div>
-    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-</form>
+</div>

@@ -12,7 +12,7 @@ class Employees extends Controller {
             return $this->render('employee', ['employee' => $employee]);
         } else {
             $employees = Employee::findAll();
-            return $this->render('home', ['employees' => $employees]);
+            return $this->render('employees', ['employees' => $employees]);
         }
     }
 

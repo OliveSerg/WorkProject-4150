@@ -1,51 +1,55 @@
-<table class="table">
-    <thead class="thead-primary">
-        <tr>
-            <th scope="col">SSN</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Salary</th>
-            <th scope="col">Options</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($employees as $employee) {
-        ?>
-            <tr>
-                <th scope="row"><a href="/employee?ssn=<?= $employee->Ssn ?>"><?= $employee->Ssn; ?></a></th>
-                <td><?= $employee->Fname . " " . $employee->Lname; ?></td>
-                <td><?= $employee->Address; ?></td>
-                <td><?= $employee->Salary; ?></td>
-                <td><?= "Add" ?></td>
-            </tr>
-        <?php } ?>
-    </tbody>
-</table>
-<form class="container border" method="post" action="/employee">
-    <div class="form-group">
-        <label for="ssn">Enter Employee Social Security Number:</label>
-        <input type="text" class="form-control" name="Ssn">
+<div class="employees row gutters-sm my-3">
+    <form class="container border col-md-4" method="post" action="/employee">
+        <h3 class="my-3 text-center">Add an Employee</h3>
+        <div class="mb-3">
+            <label class="col-form-label fw-bold" for="Ssn">Enter Employee Social Security Number:</label>
+
+            <input type="text" class="form-control" name="Ssn">
+        </div>
+        <div class="mb-3">
+            <label class="col-form-label fw-bold" for="Lname">Employee Last name is:</label>
+            <input type="text" class="form-control" name="Lname">
+        </div>
+        <div class="my-3">
+            <label class="col-form-label fw-bold" for="Fname">Employee First name is:</label>
+            <input type="text" class="form-control" name="Fname">
+        </div>
+        <div class="my-3">
+            <label class="col-form-label fw-bold" for="Address">Employee Address is:</label>
+            <input type="text" class="form-control" name="Address">
+        </div>
+        <div class="my-3">
+            <label class="col-form-label fw-bold" for="Salary">Employee Salary is:</label>
+            <input type="text" class="form-control" name="Salary">
+        </div>
+        <div class="my-3">
+            <label class="col-form-label fw-bold" for="Dno">Department Number is:</label>
+            <input type="text" class="form-control" name="Dno">
+        </div>
+        <button type="submit" class="btn btn-primary my-3" name="submit">Add</button>
+    </form>
+    <div class="col-md-8">
+        <table class="table">
+            <thead class="thead-primary">
+                <tr>
+                    <th scope="col">SSN</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($employees as $employee) { ?>
+                    <tr>
+                        <th scope="row"><a href="/employee?ssn=<?= $employee->Ssn ?>"><?= $employee->Ssn; ?></a></th>
+                        <td><?= $employee->Fname . " " . $employee->Lname; ?></td>
+                        <td><?= $employee->Address; ?></td>
+                        <td><?= $employee->Salary; ?></td>
+                        <td><?= "Add" ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
-    <div class="form-group">
-        <label for="lname">Employee Last name is:</label>
-        <input type="text" class="form-control" name="Lname">
-    </div>
-    <div class="form-group">
-        <label for="fname">Employee First name is:</label>
-        <input type="text" class="form-control" name="Fname">
-    </div>
-    <div class="form-group">
-        <label for="address">Employee Address is:</label>
-        <input type="text" class="form-control" name="Address">
-    </div>
-    <div class="form-group">
-        <label for="salary">Employee Salary is:</label>
-        <input type="text" class="form-control" name="Salary">
-    </div>
-    <div class="form-group">
-        <label for="salary">Department Number is:</label>
-        <input type="text" class="form-control" name="Dno">
-    </div>
-    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-</form>
+</div>
