@@ -2,6 +2,7 @@
 
 namespace general;
 
+use Attribute;
 use \general\Query;
 
 abstract class Model {
@@ -12,6 +13,17 @@ abstract class Model {
 
     public function __construct($tableName = '') {
         $this->query = new Query($tableName);
+    }
+
+    public function save() {
+        $insertData = [];
+        foreach ($this->attributes as $attribute) {
+            if ($this->{$attribute}) {
+                $insertData[$attribute] = $this->{$attribute};
+            }
+        }
+
+        $this->query->insert($insertData);
     }
 
     private function _find($id) {

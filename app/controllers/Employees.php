@@ -15,4 +15,20 @@ class Employees extends Controller {
             return $this->render('home', ['employees' => $employees]);
         }
     }
+
+    public function post($req, $res) {
+        if (isset($_POST['submit'])) {
+            $employee = new Employee();
+            $employee->loadData([
+                "Ssn" => $_POST["Ssn"],
+                "Fname" => $_POST["Fname"],
+                "Lname" => $_POST["Lname"],
+                "Address" => $_POST["Address"],
+                "Salary" => $_POST["Salary"],
+                "Dno" => $_POST["Dno"],
+                "Bdate" => date("Y-m-d")
+            ])->save();
+        }
+        return $res->redirect('/employees');
+    }
 }

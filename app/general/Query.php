@@ -30,7 +30,7 @@ class Query {
     private function _run() {
         $pdoStmt = WebApp::$app->db->prepare($this->sql);
         $pdoStmt->execute($this->params);
-        $result = NULL;
+        $result = NULL; //Need feedback for save
 
         if ($this->sqlType == 'single') {
             $result = $pdoStmt->fetch();
