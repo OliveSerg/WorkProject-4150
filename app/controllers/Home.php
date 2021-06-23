@@ -10,14 +10,15 @@ class Home extends Controller {
     }
 
     public function post($req, $res) {
-        if (isset($_POST['employee'])) {
-            return $res->redirect('/employee?ssn=' . $_POST['employee']);
+        $body = $req->getBody();
+        if (isset($body['employee'])) {
+            return $res->redirect('/employee?ssn=' . $body['employee']);
         }
-        if (isset($_POST['project'])) {
-            return $res->redirect('/project?Pnumber=' . $_POST['project']);
+        if (isset($body['project'])) {
+            return $res->redirect('/project?Pnumber=' . $body['project']);
         }
-        if (isset($_POST['department'])) {
-            return $res->redirect('/department?Dnumber=' . $_POST['department']);
+        if (isset($body['department'])) {
+            return $res->redirect('/department?Dnumber=' . $body['department']);
         }
         return $res->redirect('/');
     }

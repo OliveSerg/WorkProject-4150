@@ -1,0 +1,23 @@
+<div class="row my-3">
+    <h3>Update for <?= $title ?></h3>
+    <form action="/project" method="post">
+        <div>
+            <?php foreach ($model->getAttributes() as $attribute) { ?>
+                <div class="my-3">
+                    <label class="col-form-label fw-bold" for="<?= $attribute; ?>"><?= $attribute; ?></label>
+                    <input type="text" class="form-control" name="<?= $attribute; ?>" value="<?= $model->getData($attribute); ?>">
+                </div>
+            <?php } ?>
+        </div>
+        <label class="col-form-label fw-bold" for="selectData">Add multiple</label>
+        <select class="form-select" name="selectData[]" multiple aria-label="Select multiple">
+            <?php foreach ($selectData as $data) {
+                $primaryKey = $data->getData($data->getAttributes()['primarykey']);
+            ?>
+                <option value="<?= $primaryKey; ?>"><?= $primaryKey . ' ' . $data->getData('Fname'); ?></option>
+            <?php } ?>
+        </select>
+        <input type="hidden" name="_method" value="update">
+        <button type="submit" class="btn btn-primary my-3" name="submit">Update</button>
+    </form>
+</div>

@@ -7,8 +7,9 @@ use \models\Employee;
 
 class Employees extends Controller {
     public function get($req, $res) {
-        if (isset($req->getBody()['ssn'])) {
-            $employee = Employee::find($req->getBody()['ssn']);
+        $body = $req->getBody();
+        if (isset($body['ssn'])) {
+            $employee = Employee::find($body['ssn']);
             return $this->render('employee', ['employee' => $employee]);
         } else {
             $employees = Employee::findAll();
@@ -17,15 +18,16 @@ class Employees extends Controller {
     }
 
     public function post($req, $res) {
-        if (isset($_POST['submit'])) {
+        $body = $req->getBody();
+        if (isset($body['submit'])) {
             $employee = new Employee();
             $employee->loadData([
-                "Ssn" => $_POST["Ssn"],
-                "Fname" => $_POST["Fname"],
-                "Lname" => $_POST["Lname"],
-                "Address" => $_POST["Address"],
-                "Salary" => $_POST["Salary"],
-                "Dno" => $_POST["Dno"],
+                "Ssn" => $body["Ssn"],
+                "Fname" => $body["Fname"],
+                "Lname" => $body["Lname"],
+                "Address" => $body["Address"],
+                "Salary" => $body["Salary"],
+                "Dno" => $body["Dno"],
                 "Bdate" => date("Y-m-d")
             ])->save();
         }

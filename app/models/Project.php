@@ -34,4 +34,16 @@ class Project extends Model {
         }
         return $this->employees;
     }
+
+    public function addEmployee($employees = []) {
+        foreach ($employees as $employee) {
+            $this->query->setTable('WORKS_ON');
+            $insertData = [
+                'Essn' => $employee->Ssn,
+                'Pno' => $this->Pnumber,
+                'Hours' => 0
+            ];
+            $this->query->insert($insertData);
+        }
+    }
 }

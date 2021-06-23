@@ -7,17 +7,18 @@
                     <h5 class="card-title"><?= $project->Pname; ?></h5>
                     <p class="card-text">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>
 
-                    <div class="card-text">
+                    <div class="card-text mb-3">
                         <p><b>Project Number:</b>&emsp;<?= $project->Pnumber; ?></p>
                         <p><b>Location:</b>&emsp;<?= $project->Plocation; ?></p>
                         <p><b>Departmen:</b>&emsp;<?= $project->Dnum; ?></p>
-                        <p class="mb-0"><b>Budget:</b>&emsp;$<?= rand(500, 100000) ?></p>
+                        <p><b>Budget:</b>&emsp;$<?= rand(500, 100000) ?></p>
                     </div>
+                    <a class="btn btn-primary" href="/project/edit?Pnumber=<?= $project->getData('Pnumber'); ?>">Update</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-8 mb-3">
+        <div class=" col-md-8 mb-3">
             <div class="row gutters-sm">
                 <?php if ($project->getEmployees()) {
                     foreach ($project->getEmployees() as $employee) { ?>

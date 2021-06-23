@@ -4,7 +4,15 @@ namespace general;
 
 class Request {
     public function getMethod() {
-        return strtoLower($_SERVER['REQUEST_METHOD']);
+        $method = strtoLower($_SERVER['REQUEST_METHOD']);
+        if (isset($_POST['_method'])) {
+            if ($_POST['_method'] == 'update') {
+                $method = 'update';
+            } elseif ($_POST['_method'] == 'delete') {
+                $method = 'delete';
+            }
+        }
+        return $method;
     }
 
     public function getUrl() {
@@ -23,7 +31,7 @@ class Request {
             $data = [$_GET, INPUT_GET];
         }
         foreach ($data[0] as $key => $value) {
-            $body[$key] = filter_input($data[1], $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            $body[$key] = filter_input($data[1], $key, FILTER_SANITIZE_SPECIAL_CHARS, is_array($value) ? FILTER_REQUIRE_ARRAY : NULL);
         }
         return $body;
     }

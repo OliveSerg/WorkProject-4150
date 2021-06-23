@@ -24,6 +24,8 @@ $app->router->add('/employee', [\controllers\Employees::class, 'post']);
 $app->router->add('/employees', [\controllers\Employees::class, 'get']);
 $app->router->add('/project', [\controllers\Projects::class, 'get']);
 $app->router->add('/project', [\controllers\Projects::class, 'post']);
+$app->router->add('/project', [\controllers\Projects::class, 'update']);
 $app->router->add('/projects', [\controllers\Projects::class, 'get']);
+$app->router->add('/project/edit', [\controllers\Projects::class, 'get']);
 
 echo $app->router->run();
