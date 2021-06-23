@@ -29,8 +29,7 @@ class Query {
 
     private function _run() {
         $pdoStmt = WebApp::$app->db->prepare($this->sql);
-        $pdoStmt->execute($this->params);
-        $result = NULL; //Need feedback for save
+        $result = $pdoStmt->execute($this->params);
 
         if ($this->sqlType == 'single') {
             $result = $pdoStmt->fetch();
@@ -68,11 +67,12 @@ class Query {
     // public function delete() {
     // }
 
-    public function where($column, $value, $type = '') {
+    public function where($column, $value, $type = '', $operator = '=') {
         $this->where[] = [
             'column' => $column,
             'value' => $value,
-            'type' => $type
+            'type' => $type,
+            'operator' => $operator
         ];
         return $this;
     }
@@ -83,8 +83,19 @@ class Query {
 
             foreach ($this->where as $clause) {
                 $varName = ':' . $clause['column'];
-                $this->sql .= ' ' . $clause['type'] . ' ' . $clause['column'] . ' = ' . $varName;
-                $this->params[$varName] = $clause['value'];
+                if ($clause['operator'] == 'IN' || $clause['operator'] == 'NOT IN') {
+                    $varName = '(';
+                    $i = 0;
+                    foreach ($clause['value'] as $value) {
+                        $curName = ':' . $clause['column'] . $i++;
+                        $this->params[$curName] = $value;
+                        $varName .= $curName . ($i < count($clause['value']) ? ',' : '');
+                    }
+                    $varName .= ')';
+                } else {
+                    $this->params[$varName] = $clause['value'];
+                }
+                $this->sql .= ' ' . $clause['type'] . ' ' . $clause['column'] . ' ' . $clause['operator'] . ' ' . $varName;
             }
         }
     }

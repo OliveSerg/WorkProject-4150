@@ -45,7 +45,7 @@ abstract class Model {
         $this->query->setType('collection');
         if ($conds) {
             foreach ($conds as $cond) {
-                $this->query->where($cond['column'], $cond['value'], $cond['type']);
+                $this->query->where($cond['column'], $cond['value'], $cond['type'], $cond['operator']);
             }
         }
         $data = $this->query->select();
