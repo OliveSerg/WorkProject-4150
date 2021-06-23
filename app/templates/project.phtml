@@ -1,0 +1,47 @@
+<div class="projects my-3">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <img src="https://via.placeholder.com/400x300/FFB6C1/000000" alt="project-image" class="rounded mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $project->Pname; ?></h5>
+                    <p class="card-text">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>
+
+                    <div class="card-text">
+                        <p><b>Project Number:</b>&emsp;<?= $project->Pnumber; ?></p>
+                        <p><b>Location:</b>&emsp;<?= $project->Plocation; ?></p>
+                        <p><b>Departmen:</b>&emsp;<?= $project->Dnum; ?></p>
+                        <p class="mb-0"><b>Budget:</b>&emsp;$<?= rand(500, 100000) ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 mb-3">
+            <div class="row gutters-sm">
+                <?php if ($project->getEmployees()) {
+                    foreach ($project->getEmployees() as $employee) { ?>
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar<?= rand(1, 8); ?>.png" alt="Admin" class="rounded-circle" width="150">
+                                        <div class="mt-3">
+                                            <h4><?= $employee->getFullname(); ?></h4>
+                                            <p class="text-secondary mb-1"><?= $employee->Ssn; ?></p>
+                                            <p class="text-muted font-size-sm"><?= $employee->Address; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php }
+                } else { ?>
+                    <div class="col-sm-12 mb-3">
+                        <h4>There are no Employees working on <?= $project->Pname; ?></h4>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
