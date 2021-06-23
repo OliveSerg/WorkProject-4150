@@ -25,14 +25,20 @@
                         <div class="col-sm-6 mb-3">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar<?= rand(1, 8); ?>.png" alt="Admin" class="rounded-circle" width="150">
-                                        <div class="mt-3">
-                                            <h4><?= $employee->getFullname(); ?></h4>
-                                            <p class="text-secondary mb-1"><?= $employee->Ssn; ?></p>
-                                            <p class="text-muted font-size-sm"><?= $employee->Address; ?></p>
+                                    <form action="/project" method="post">
+                                        <div class="d-flex flex-column align-items-center text-center">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar<?= rand(1, 8); ?>.png" alt="Admin" class="rounded-circle" width="150">
+                                            <div class="mt-3">
+                                                <h4><?= $employee->getFullname(); ?></h4>
+                                                <p class="text-secondary mb-1"><?= $employee->Ssn; ?></p>
+                                                <p class="text-muted font-size-sm"><?= $employee->Address; ?></p>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary my-3" name="submit">Remove</button>
                                         </div>
-                                    </div>
+                                        <input type="hidden" name="employeeSsn" value="<?= $employee->getData('Ssn'); ?>">
+                                        <input type="hidden" name="Pnumber" value="<?= $project->getData('Pnumber'); ?>">
+                                        <input type="hidden" name="_method" value="update">
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -64,8 +64,11 @@ class Query {
     // public function update() {
     // }
 
-    // public function delete() {
-    // }
+    public function delete() {
+        $this->sql = 'DELETE FROM ' . $this->tableName;
+        $this->_buildWhere();
+        return $this->_run();
+    }
 
     public function where($column, $value, $type = '', $operator = '=') {
         $this->where[] = [

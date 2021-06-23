@@ -46,4 +46,11 @@ class Project extends Model {
             $this->query->insert($insertData);
         }
     }
+
+    public function removeEmployee($employee) {
+        $this->query->setTable('WORKS_ON');
+        $this->query->where('Essn', $employee)
+            ->where('Pno', $this->Pnumber, 'AND')
+            ->delete();
+    }
 }

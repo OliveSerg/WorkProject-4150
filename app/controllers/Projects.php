@@ -67,6 +67,10 @@ class Projects extends Controller {
             }
             $project->addEmployee($employees);
         }
+        if (isset($body['employeeSsn'])) {
+            $employeeSsn = $body['employeeSsn'];
+            $project->removeEmployee($employeeSsn);
+        }
         return $res->redirect('/project?Pnumber=' . $body['Pnumber']);
     }
 }
