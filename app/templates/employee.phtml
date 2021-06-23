@@ -13,6 +13,19 @@
                             <button class="btn btn-outline-primary">Message</button> -->
                         </div>
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <?php foreach ($employee->getDependents() as $dependent) { ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <h6 class="fw-bold"><?= $dependent['Dependent_name']; ?></h6>
+                                    <span><?= $dependent['Relationship']; ?></span>
+                                    -
+                                    <span><?= date('F j Y', strtotime($dependent['Bdate'])); ?></span>
+                                </div>
+                                <span class="badge bg-primary rounded-pill"><?= $dependent['Sex']; ?></span>
+                            </li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -36,7 +49,11 @@
                                     <h6 class="mb-0"><?= $value; ?></h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <?= $employee->{$value}; ?>
+                                    <?php if ($value == 'Bdate') {
+                                        echo date('F j Y', strtotime($employee->{$value}));
+                                    } else {
+                                        echo $employee->{$value};
+                                    } ?>
                                 </div>
                             </div>
                             <hr>

@@ -17,6 +17,7 @@ class Employee extends Model {
     public $Super_ssn = '';
     public $Dno = '';
     protected $projects = [];
+    protected $dependents = [];
 
     public function __construct() {
         $this->table = "EMPLOYEE";
@@ -43,5 +44,16 @@ class Employee extends Model {
             }
         }
         return $this->projects;
+    }
+
+    public function getDependents() {
+        // TODO:: Possibly create a model for dependent or filter dependent attributes
+        if ($this->Ssn && !$this->dependents) {
+            $this->query->setType('collection');
+            $this->dependents = $this->query->join('inner', 'DEPENDENT', 'DEPENDENT.Essn = ' . $this->attributes['primarykey'])
+                ->where($this->attributes['primarykey'], $this->Ssn)
+                ->select();
+        }
+        return $this->dependents;
     }
 }
