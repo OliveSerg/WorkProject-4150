@@ -7,7 +7,7 @@ use \models\Employee;
 
 class Employees extends Controller {
     public function get($req, $res) {
-        if ($req->getBody()) {
+        if (isset($req->getBody()['ssn'])) {
             $employee = Employee::find($req->getBody()['ssn']);
             return $this->render('employee', ['employee' => $employee]);
         } else {

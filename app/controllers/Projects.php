@@ -7,7 +7,7 @@ use \models\Project;
 
 class Projects extends Controller {
     public function get($req, $res) {
-        if ($req->getBody()) {
+        if (isset($req->getBody()['Pnumber'])) {
             $project = Project::find($req->getBody()['Pnumber']);
             return $this->render('project', ['project' => $project]);
         } else {

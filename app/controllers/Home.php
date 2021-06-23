@@ -14,10 +14,10 @@ class Home extends Controller {
             return $res->redirect('/employee?ssn=' . $_POST['employee']);
         }
         if (isset($_POST['project'])) {
-            return $res->redirect('/project?ssn=' . $_POST['project']);
+            return $res->redirect('/project?Pnumber=' . $_POST['project']);
         }
         if (isset($_POST['department'])) {
-            return $res->redirect('/department?ssn=' . $_POST['department']);
+            return $res->redirect('/department?Dnumber=' . $_POST['department']);
         }
         return $res->redirect('/');
     }
