@@ -72,7 +72,10 @@
                     <div class="col-sm-6 mb-3">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2"><?= $project->Pname; ?></i></h6>
+                                <h6 class="d-flex align-items-center justify-content-between mb-3">
+                                    <i class="material-icons text-info mr-2"><?= $project->Pname; ?></i>
+                                    <span class="badge bg-primary rounded-pill"><?= $project->hours; ?></span>
+                                </h6>
                                 <?php foreach ($project->getAttributes() as $value) {
                                     if ($value == 'Pname') {
                                         continue;

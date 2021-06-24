@@ -36,10 +36,11 @@ class Employee extends Model {
             $data = $this->query->join('inner', 'WORKS_ON', 'WORKS_ON.Essn = ' . $this->attributes['primarykey'])
                 ->join('inner', 'PROJECT', 'WORKS_ON.Pno = ' . $tempProj->getAttributes()['primarykey'])
                 ->where($this->attributes['primarykey'], $this->Ssn)
-                ->select(implode(',', $tempProj->getAttributes()));
+                ->select(implode(',', $tempProj->getAttributes()) . ',Hours');
 
             foreach ($data as $projectData) {
                 $project = new Project();
+                $project->hours = $projectData['Hours'];
                 $this->projects[] = $project->loadData($projectData);
             }
         }
