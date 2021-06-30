@@ -2,7 +2,6 @@
 
 namespace general;
 
-use Attribute;
 use \general\Query;
 
 abstract class Model {

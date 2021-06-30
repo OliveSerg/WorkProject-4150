@@ -16,7 +16,11 @@ class View {
             $$key = $value;
         }
         ob_start();
-        include_once WebApp::$ROOT_DIR . "/app/templates/$view.phtml";
+        if ($file = glob(WebApp::$ROOT_DIR . "/app/templates/$view.{phtml,html}", GLOB_BRACE)) {
+            include_once $file[0];
+        } else {
+            echo "File $view Does not exist";
+        }
         return ob_get_clean();
     }
 }
