@@ -8,7 +8,7 @@ use \general\DotEnv;
 
 (new DotEnv(__DIR__ . '/.env'))->load();
 $config = [
-    'uri_path' => 'complex',
+    'uri_path' => '',
     'db' => [
         'host' => $_ENV['DB_HOST'],
         'name' => $_ENV['DB_NAME'],

@@ -1,6 +1,10 @@
+<?php
+
+use general\WebApp;
+?>
 <div class="row my-3">
     <h3>Update for <?= $title ?></h3>
-    <form action="/project" method="post">
+    <form action="<?php echo WebApp::getUrlPath("/project"); ?>" method="post">
         <div>
             <?php foreach ($model->getAttributes() as $attribute) { ?>
                 <div class="my-3">

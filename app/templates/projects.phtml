@@ -1,5 +1,9 @@
+<?php
+
+use general\WebApp;
+?>
 <div class="projects row gutters-sm my-3">
-    <form class="container border col-md-4" method="post" action="/project">
+    <form class="container border col-md-4" method="post" action="<?php echo WebApp::getUrlPath("/project"); ?>">
         <h3 class="my-3 text-center">Add a Project</h3>
         <div class="mb-3">
             <label class="col-form-label fw-bold" for="Pnumber">Project Number is:</label>
@@ -34,7 +38,7 @@
             <tbody>
                 <?php foreach ($projects as $project) { ?>
                     <tr>
-                        <th scope="row"><a href="/project?Pnumber=<?= $project->Pnumber; ?>"><?= $project->Pnumber; ?></a></th>
+                        <th scope="row"><a href="<?php echo WebApp::getUrlPath("/project?Pnumber=" . $project->getData('Pnumber')); ?>"><?= $project->getData('Pnumber'); ?></a></th>
                         <td><?= $project->Pname; ?></td>
                         <td><?= $project->Plocation; ?></td>
                         <td><?= $project->Dnum; ?></td>

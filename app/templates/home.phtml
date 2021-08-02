@@ -1,3 +1,7 @@
+<?php
+
+use general\WebApp;
+?>
 <div class="home my-3">
     <div>
         <h1 class="display-1">Welcome to The Company!</h1>
@@ -7,11 +11,11 @@
         <div class="col-md-4">
             <div class="card bg-primary text-white">
                 <div class="card-body text-center">
-                    <a class="btn text-white" href="/employees">
+                    <a class="btn text-white" href="<?php echo WebApp::getUrlPath("/employees"); ?>">
                         <h5 class="card-title fw-bold">Check out all the Employees</h5>
                         <p class="card-text">Click here to see all the current employees of the Company and add or update ones</p>
                     </a>
-                    <form class="row mt-3" method="post" action="/">
+                    <form class="row mt-3" method="post" action="<?php echo WebApp::getUrlPath("/"); ?>">
                         <div class="col-auto">
                             <label class="col-form-label fw-bold" for="employee">Search:</label>
                         </div>
@@ -25,11 +29,11 @@
         <div class="col-md-4">
             <div class="card bg-info text-white">
                 <div class="card-body text-center">
-                    <a class="btn text-white" href="/projects">
+                    <a class="btn text-white" href="<?php echo WebApp::getUrlPath("/projects"); ?>">
                         <h5 class="card-title fw-bold">Check out all the Projects</h5>
                         <p class="card-text">Click here to see all the current projects of the Company and add or update ones</p>
                     </a>
-                    <form class="row mt-3" method="post" action="/">
+                    <form class="row mt-3" method="post" action="<?php echo WebApp::getUrlPath("/"); ?>">
                         <div class="col-auto">
                             <label class="col-form-label fw-bold" for="project">Search:</label>
                         </div>
@@ -43,11 +47,11 @@
         <div class="col-md-4">
             <div class="card bg-secondary text-white">
                 <div class="card-body text-center">
-                    <a class="btn text-white" href="/departments">
+                    <a class="btn text-white" href="<?php echo WebApp::getUrlPath("/departments"); ?>">
                         <h5 class="card-title fw-bold">Check out all the Departments</h5>
                         <p class="card-text">Click here to see all the current departments of the Company and add or update ones</p>
                     </a>
-                    <form class="row mt-3" method="post" action="/">
+                    <form class="row mt-3" method="post" action="<?php echo WebApp::getUrlPath("/"); ?>">
                         <div class="col-auto">
                             <label class="col-form-label fw-bold" for="department">Search:</label>
                         </div>

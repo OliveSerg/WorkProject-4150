@@ -27,4 +27,8 @@ class WebApp {
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config['db']);
     }
+
+    public static function getUrlPath($path) {
+        return self::$ROOT_URI . $path;
+    }
 }

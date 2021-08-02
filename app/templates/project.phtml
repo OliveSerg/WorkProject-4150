@@ -1,3 +1,7 @@
+<?php
+
+use general\WebApp;
+?>
 <div class="projects my-3">
     <div class="row">
         <div class="col-md-4 mb-3">
@@ -13,7 +17,7 @@
                         <p><b>Departmen:</b>&emsp;<?= $project->Dnum; ?></p>
                         <p><b>Budget:</b>&emsp;$<?= rand(500, 100000) ?></p>
                     </div>
-                    <a class="btn btn-primary" href="/project/edit?Pnumber=<?= $project->getData('Pnumber'); ?>">Update</a>
+                    <a class="btn btn-primary" href="<?php echo WebApp::getUrlPath("/project/edit?Pnumber=" . $project->getData('Pnumber')); ?>">Update</a>
                 </div>
             </div>
         </div>
@@ -25,7 +29,7 @@
                         <div class="col-sm-6 mb-3">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <form action="/project" method="post">
+                                    <form action="<?php echo WebApp::getUrlPath("/project"); ?>" method="post">
                                         <div class="d-flex flex-column align-items-center text-center">
                                             <img src="https://bootdey.com/img/Content/avatar/avatar<?= rand(1, 8); ?>.png" alt="Admin" class="rounded-circle" width="150">
                                             <div class="mt-3">
