@@ -41,6 +41,12 @@ class Query {
         return $result;
     }
 
+    public function raw($sql, $params) {
+        $this->sql = $sql;
+        $this->params = $params;
+        return $this->_run();
+    }
+
     public function select($attr = '*') {
         $this->sql = 'SELECT ' . $attr . ' FROM ' . $this->tableName;
         $this->_buildJoin();

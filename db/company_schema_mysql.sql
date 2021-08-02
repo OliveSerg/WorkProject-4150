@@ -51,7 +51,4 @@ Relationship VARCHAR(8),
 PRIMARY KEY(Essn, Dependent_name),
 FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn));
 
-
 COMMIT;
-
-

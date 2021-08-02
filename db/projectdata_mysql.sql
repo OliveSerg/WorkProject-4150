@@ -16,3 +16,4 @@ VALUES ('Reorganize', 20, 'Houston',  1);
 INSERT INTO PROJECT
 VALUES ('Nbenefits', 30, 'Stafford',  4);
 
+COMMIT;

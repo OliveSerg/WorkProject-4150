@@ -7,3 +7,5 @@ VALUES ('Administration', 4, '987654321', '1995-01-01');
 
 INSERT INTO DEPARTMENT
 VALUES ('Headquarters', 1, '888665555', '1981-06-19');
+
+COMMIT;

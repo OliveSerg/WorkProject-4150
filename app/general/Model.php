@@ -7,7 +7,7 @@ use \general\Query;
 abstract class Model {
 
     protected $table = '';
-    protected $attributes = [];
+    protected $attributes = ['primarykey' => ''];
     protected Query $query;
 
     public function __construct($tableName = '') {
