@@ -3,6 +3,7 @@
 namespace controllers;
 
 use \general\Controller;
+use \general\WebApp;
 use \models\Employee;
 
 class Employees extends Controller {
@@ -31,6 +32,6 @@ class Employees extends Controller {
                 "Bdate" => date("Y-m-d")
             ])->save();
         }
-        return $res->redirect('/employees');
+        return $res->redirect(WebApp::getUrlPath('/employees'));
     }
 }

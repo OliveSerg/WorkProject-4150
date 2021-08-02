@@ -3,6 +3,7 @@
 namespace controllers;
 
 use \general\Controller;
+use \general\WebApp;
 use \models\Project;
 use \models\Employee;
 
@@ -54,7 +55,7 @@ class Projects extends Controller {
                 "Dnum" => $body["Dnum"]
             ])->save();
         }
-        return $res->redirect('/projects');
+        return $res->redirect(WebApp::getUrlPath('/projects'));
     }
 
     public function update($req, $res) {
@@ -71,6 +72,6 @@ class Projects extends Controller {
             $employeeSsn = $body['employeeSsn'];
             $project->removeEmployee($employeeSsn);
         }
-        return $res->redirect('/project?Pnumber=' . $body['Pnumber']);
+        return $res->redirect(WebApp::getUrlPath('/project?Pnumber=' . $body['Pnumber']));
     }
 }

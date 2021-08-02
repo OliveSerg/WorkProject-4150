@@ -3,6 +3,7 @@
 namespace controllers;
 
 use \general\Controller;
+use \general\WebApp;
 
 class Home extends Controller {
     public function get($req, $res) {
@@ -12,14 +13,14 @@ class Home extends Controller {
     public function post($req, $res) {
         $body = $req->getBody();
         if (isset($body['employee'])) {
-            return $res->redirect('/employee?ssn=' . $body['employee']);
+            return $res->redirect(WebApp::getUrlPath('/employee?ssn=' . $body['employee']));
         }
         if (isset($body['project'])) {
-            return $res->redirect('/project?Pnumber=' . $body['project']);
+            return $res->redirect(WebApp::getUrlPath('/project?Pnumber=' . $body['project']));
         }
         if (isset($body['department'])) {
-            return $res->redirect('/department?Dnumber=' . $body['department']);
+            return $res->redirect(WebApp::getUrlPath('/department?Dnumber=' . $body['department']));
         }
-        return $res->redirect('/');
+        return $res->redirect(WebApp::getUrlPath('/'));
     }
 }
