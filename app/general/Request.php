@@ -21,6 +21,7 @@ class Request {
         if ($position !== false) {
             $path = substr($path, 0, $position);
         }
+        $path = str_replace(WebApp::$ROOT_URI, '', $path);
         return $path;
     }
 

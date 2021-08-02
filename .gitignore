@@ -2,4 +2,6 @@
 .htaccess
 controller.php
 model.php
-template.php
+index2.php
+tnsnames.ora
+envLoader.php
