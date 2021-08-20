@@ -1,0 +1,51 @@
+<?php
+
+use \general\WebApp;
+?>
+<div class="departments row gutters-sm my-3">
+    <form class="container border col-md-4" method="post" action="<?php echo WebApp::getUrlPath("/department"); ?>">
+        <h3 class="my-3 text-center">Add a Department</h3>
+        <div class="mb-3">
+            <label class="col-form-label fw-bold" for="Dnumber">Department Number is:</label>
+            <input type="text" class="form-control <?= !$errors['Dnumber'] ?: 'is-invalid'; ?>" name="Dnumber" required>
+            <div class="invalid-feedback">
+                <?= $errors['Dnumber'][0]; ?>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="col-form-label fw-bold" for="Dname">Department Name is:</label>
+            <input type="text" class="form-control <?= !$errors['Dname'] ?: 'is-invalid'; ?>" name="Dname" required>
+            <div class="invalid-feedback">
+                <?= $errors['Dname'][0]; ?>
+            </div>
+        </div>
+        <div class="my-3">
+            <label class="col-form-label fw-bold" for="MGR_SSN">Manager SSN is:</label>
+            <input type="text" class="form-control <?= !$errors['MGR_SSN'] ?: 'is-invalid'; ?>" name="MGR_SSN" required>
+            <div class="invalid-feedback">
+                <?= $errors['MGR_SSN'][0]; ?>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary my-3" name="submit">Add</button>
+    </form>
+    <div class="col-md-8">
+        <table class="table">
+            <thead class="thead-primary">
+                <tr>
+                    <th scope="col">Department Number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Manager SSN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($departments as $department) { ?>
+                    <tr>
+                        <th scope="row"><a href="<?php echo WebApp::getUrlPath("/department?Dnumber=" . $department->getData('Dnumber')); ?>"><?= $department->getData('Dnumber'); ?></a></th>
+                        <td><?= $department->Dname; ?></td>
+                        <td><?= $department->MGR_SSN; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
