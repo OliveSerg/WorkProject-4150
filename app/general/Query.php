@@ -151,9 +151,11 @@ class Query {
 
     public function setTable($tableName) {
         $this->tableName = $tableName;
+        return $this;
     }
 
     public function setType($type) {
         $this->sqlType = $type;
+        return $this;
     }
 }
