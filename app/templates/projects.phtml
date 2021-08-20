@@ -7,20 +7,31 @@ use \general\WebApp;
         <h3 class="my-3 text-center">Add a Project</h3>
         <div class="mb-3">
             <label class="col-form-label fw-bold" for="Pnumber">Project Number is:</label>
-
-            <input type="text" class="form-control" name="Pnumber">
+            <input type="text" class="form-control <?= !$errors['Pnumber'] ?: 'is-invalid'; ?>" name="Pnumber" required>
+            <div class="invalid-feedback">
+                <?= $errors['Pnumber'][0]; ?>
+            </div>
         </div>
         <div class="mb-3">
             <label class="col-form-label fw-bold" for="Pname">Project name is:</label>
-            <input type="text" class="form-control" name="Pname">
+            <input type="text" class="form-control <?= !$errors['Pname'] ?: 'is-invalid'; ?>" name="Pname" required>
+            <div class="invalid-feedback">
+                <?= $errors['Pname'][0]; ?>
+            </div>
         </div>
         <div class="my-3">
             <label class="col-form-label fw-bold" for="Plocation">Project Location is:</label>
-            <input type="text" class="form-control" name="Plocation">
+            <input type="text" class="form-control <?= !$errors['Plocation'] ?: 'is-invalid'; ?>" name="Plocation" required>
+            <div class="invalid-feedback">
+                <?= $errors['Plocation'][0]; ?>
+            </div>
         </div>
         <div class="my-3">
             <label class="col-form-label fw-bold" for="Dnum">Department number is:</label>
-            <input type="text" class="form-control" name="Dnum">
+            <input type="text" class="form-control <?= !$errors['Dnum'] ?: 'is-invalid'; ?>" name="Dnum" required>
+            <div class="invalid-feedback">
+                <?= $errors['Dnum'][0]; ?>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary my-3" name="submit">Add</button>
     </form>

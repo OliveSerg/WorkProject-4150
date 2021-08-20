@@ -13,10 +13,11 @@ abstract class Model {
     const RULE_MATCH = 'match';
     const RULE_UNIQUE = 'unique';
 
+    public $errors = [];
+
     protected $table = '';
     protected $attributes = ['primarykey' => ''];
     protected $rules = [];
-    protected $errors = [];
     protected Query $query;
 
     public function __construct($tableName = '') {
@@ -130,7 +131,7 @@ abstract class Model {
                 }
 
                 if ($ruleName === self::RULE_MAX && strlen($value) > $rule['max']) {
-                    $this->addErrorByRule($attribute, self::RULE_MAX);
+                    $this->addErrorByRule($attribute, self::RULE_MAX, ['max' => $rule['max']]);
                 }
 
                 if ($ruleName === self::RULE_MATCH) {

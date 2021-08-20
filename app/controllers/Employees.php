@@ -31,6 +31,11 @@ class Employees extends Controller {
                 "Dno" => $body["Dno"],
                 "Bdate" => date("Y-m-d")
             ])->save();
+
+            if ($employee->errors) {
+                $employees = Employee::findAll();
+                return $this->render('employees', ['employees' => $employees, 'errors' => $employee->errors]);
+            }
         }
         return $res->redirect(WebApp::getUrlPath('/employees'));
     }

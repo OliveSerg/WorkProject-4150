@@ -52,6 +52,11 @@ class Projects extends Controller {
                 "Plocation" => $body["Plocation"],
                 "Dnum" => $body["Dnum"]
             ])->save();
+
+            if ($project->errors) {
+                $projects = Project::findAll();
+                return $this->render('projects', ['projects' => $projects, 'errors' => $project->errors]);
+            }
         }
         return $res->redirect(WebApp::getUrlPath('/projects'));
     }
