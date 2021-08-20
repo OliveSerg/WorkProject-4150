@@ -6,7 +6,7 @@ use \general\WebApp;
     <form class="container border col-md-4" method="post" action="<?php echo WebApp::getUrlPath("/employee"); ?>">
         <h3 class="my-3 text-center">Add an Employee</h3>
         <div class="mb-3">
-            <label class="col-form-label fw-bold" for="Ssn">Employee Social Security Number:</label>
+            <label class="col-form-label fw-bold" for="Ssn">Employee Social Security Number is:</label>
             <input type="text" class="form-control <?= !$errors['Ssn'] ?: 'is-invalid'; ?>" name="Ssn" required>
             <div class="invalid-feedback">
                 <?= $errors['Ssn'][0]; ?>
