@@ -22,6 +22,12 @@ class Employee extends Model {
     public function __construct() {
         $this->table = "EMPLOYEE";
         $this->attributes = ['primarykey' => 'Ssn', 'Fname', 'Minit', 'Lname',  'Bdate', 'Address', 'Sex', 'Salary', 'Super_ssn', 'Dno'];
+        $this->rules = [
+            'Ssn' => [self::RULE_REQUIRED, self::RULE_UNIQUE, [self::RULE_MAX, 'max' => 9]],
+            'Fname' => [self::RULE_REQUIRED, [self::RULE_MAX, 'max' => 15]],
+            'Lname' => [self::RULE_REQUIRED, [self::RULE_MAX, 'max' => 15]],
+            'Dno' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'tableName' => 'DEPARTMENT', 'match' => 'Dnumber']],
+        ];
         parent::__construct($this->table);
     }
 

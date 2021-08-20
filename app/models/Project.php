@@ -15,6 +15,12 @@ class Project extends Model {
     public function __construct() {
         $this->table = "PROJECT";
         $this->attributes = ['primarykey' => 'Pnumber', 'Pname', 'Plocation', 'Dnum'];
+        $this->rules = [
+            'Pnumber' => [self::RULE_REQUIRED, self::RULE_UNIQUE],
+            'Pname' => [self::RULE_REQUIRED, [self::RULE_MAX, 'max' => 15]],
+            'Plocation' => [self::RULE_REQUIRED, [self::RULE_MAX, 'max' => 15]],
+            'Dnum' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'tableName' => 'DEPARTMENT', 'match' => 'Dnumber']],
+        ];
         parent::__construct($this->table);
     }
 

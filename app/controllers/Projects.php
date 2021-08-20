@@ -44,8 +44,6 @@ class Projects extends Controller {
 
     public function post($req, $res) {
         $body = $req->getBody();
-        var_dump($body);
-        exit;
         if (isset($body['submit'])) {
             $project = new Project();
             $project->loadData([
