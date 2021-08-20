@@ -12,6 +12,7 @@ abstract class Model {
 
     public function __construct($tableName = '') {
         $this->query = new Query($tableName);
+        $this->setAttributes();
     }
 
     public function save() {
@@ -80,6 +81,12 @@ abstract class Model {
 
     public function getAttributes() {
         return $this->attributes;
+    }
+
+    private function setAttributes() {
+        foreach ($this->attributes as $attribute) {
+            $this->{$attribute} = '';
+        }
     }
 
     public function getTable() {

@@ -6,10 +6,6 @@ use \general\Model;
 use \models\Employee;
 
 class Project extends Model {
-    public $Pname = '';
-    public $Pnumber = '';
-    public $Plocation = '';
-    public $Dnum = '';
     protected $employees = [];
 
     public function __construct() {

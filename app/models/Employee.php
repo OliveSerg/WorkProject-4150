@@ -6,16 +6,6 @@ use \general\Model;
 use \models\Project;
 
 class Employee extends Model {
-    public $Ssn = '';
-    public $Fname = '';
-    public $Lname = '';
-    public $Minit = '';
-    public $Bdate = '';
-    public $Address = '';
-    public $Sex = '';
-    public $Salary = '';
-    public $Super_ssn = '';
-    public $Dno = '';
     protected $projects = [];
     protected $dependents = [];
 
