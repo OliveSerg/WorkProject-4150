@@ -21,6 +21,17 @@ class Employee extends Model {
         parent::__construct($this->table);
     }
 
+    public static function getLabels() {
+        return [
+            'Ssn' => 'Social Security Number',
+            'Fname' => 'First name',
+            'Lname' => 'Last name',
+            'Address' => 'Address',
+            'Salary' => 'Salary',
+            'Dno' => 'Department number'
+        ];
+    }
+
     public function getFullName() {
         return $this->Fname . ' ' . $this->Lname;
     }

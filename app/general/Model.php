@@ -112,6 +112,10 @@ abstract class Model {
         $this->query->setTable($tableName);
     }
 
+    public static function getLabels() {
+        return [];
+    }
+
     private function validate() {
         foreach ($this->rules as $attribute => $attributeRules) {
             $value = $this->{$attribute};

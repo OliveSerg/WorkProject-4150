@@ -16,4 +16,12 @@ class Department extends Model {
         ];
         parent::__construct($this->table);
     }
+
+    public static function getLabels() {
+        return [
+            'Dnumber' => 'Department Number',
+            'Dname' => 'Department Name',
+            'MGR_SSN' => 'Manager Ssn'
+        ];
+    }
 }

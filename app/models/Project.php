@@ -20,6 +20,15 @@ class Project extends Model {
         parent::__construct($this->table);
     }
 
+    public static function getLabels() {
+        return [
+            'Pnumber' => 'Project Number',
+            'Pname' => 'Project Name',
+            'Plocation' => 'Location',
+            'Dnum' => 'Department Number'
+        ];
+    }
+
     public function getEmployees() {
         if ($this->Pnumber && !$this->employees) {
             $tempEmp = new Employee();
