@@ -9,12 +9,20 @@ use \models\Employee;
 class Employees extends Controller {
     public function get($req, $res) {
         $body = $req->getBody();
-        if (isset($body['ssn'])) {
-            $employee = Employee::find($body['ssn']);
+        if (isset($body['Ssn'])) {
+            $employee = Employee::find($body['Ssn']);
             return $this->render('employee', ['employee' => $employee]);
         } else {
             $employees = Employee::findAll();
-            return $this->render('employees', ['employees' => $employees]);
+            return $this->render(
+                'list',
+                [
+                    'model' => Employee::class,
+                    'title' => 'Employee',
+                    'path' => '/employee',
+                    'listItems' => $employees
+                ]
+            );
         }
     }
 
@@ -34,7 +42,16 @@ class Employees extends Controller {
 
             if ($employee->errors) {
                 $employees = Employee::findAll();
-                return $this->render('employees', ['employees' => $employees, 'errors' => $employee->errors]);
+                return $this->render(
+                    'list',
+                    [
+                        'model' => Employee::class,
+                        'title' => 'Employee',
+                        'path' => '/employee',
+                        'listItems' => $employees,
+                        'errors' => $employee->errors
+                    ]
+                );
             }
         }
         return $res->redirect(WebApp::getUrlPath('/employees'));

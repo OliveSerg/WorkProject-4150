@@ -13,7 +13,15 @@ class Departments extends Controller {
             return $this->render('department', ['department' => $department]);
         } else {
             $departments = Department::findAll();
-            return $this->render('departments', ['departments' => $departments]);
+            return $this->render(
+                'list',
+                [
+                    'model' => Department::class,
+                    'title' => 'Department',
+                    'path' => '/department',
+                    'listItems' => $departments
+                ]
+            );
         }
     }
 }

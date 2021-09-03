@@ -38,7 +38,15 @@ class Projects extends Controller {
             return $this->render('project', ['project' => $project]);
         } else {
             $projects = Project::findAll();
-            return $this->render('projects', ['projects' => $projects]);
+            return $this->render(
+                'list',
+                [
+                    'model' => Project::class,
+                    'title' => 'Project',
+                    'path' => '/project',
+                    'listItems' => $projects
+                ]
+            );
         }
     }
 
@@ -55,7 +63,16 @@ class Projects extends Controller {
 
             if ($project->errors) {
                 $projects = Project::findAll();
-                return $this->render('projects', ['projects' => $projects, 'errors' => $project->errors]);
+                return $this->render(
+                    'list',
+                    [
+                        'model' => Project::class,
+                        'title' => 'Project',
+                        'path' => '/project',
+                        'listItems' => $projects,
+                        'errors' => $project->errors
+                    ]
+                );
             }
         }
         return $res->redirect(WebApp::getUrlPath('/projects'));
