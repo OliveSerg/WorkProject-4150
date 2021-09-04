@@ -8,7 +8,7 @@ use \general\WebApp;
         <?php foreach ($model::getLabels() as $attr => $label) { ?>
             <div class="mb-3">
                 <label class="col-form-label fw-bold" for="<?= $attr; ?>"><?= $title . ' ' . $label; ?>:</label>
-                <input type="text" id="" class="form-control <?= !$errors['Ssn'] ?: 'is-invalid'; ?>" name="<?= $attr; ?>" required>
+                <input type="text" id="" class="form-control <?= !$errors[$attr] ?: 'is-invalid'; ?>" name="<?= $attr; ?>" required>
                 <div class="invalid-feedback">
                     <?= $errors[$attr][0]; ?>
                 </div>

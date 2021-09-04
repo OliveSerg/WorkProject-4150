@@ -31,7 +31,7 @@ $app->router->add('/project', [\controllers\Projects::class, 'update']);
 $app->router->add('/projects', [\controllers\Projects::class, 'get']);
 $app->router->add('/project/edit', [\controllers\Projects::class, 'get']);
 $app->router->add('/department', [\controllers\Departments::class, 'get']);
-$app->router->add('/department', [\controllers\Departments::class, 'get']);
+$app->router->add('/department', [\controllers\Departments::class, 'post']);
 $app->router->add('/departments', [\controllers\Departments::class, 'get']);
 
 

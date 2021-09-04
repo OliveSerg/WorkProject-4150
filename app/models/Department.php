@@ -12,7 +12,7 @@ class Department extends Model {
         $this->rules = [
             'Dnumber' => [self::RULE_REQUIRED, self::RULE_UNIQUE],
             'Dname' => [self::RULE_REQUIRED, [self::RULE_MAX, 'max' => 15]],
-            'MGR_SSN' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'tablename' => 'EMPLOYEE', 'match' => "Ssn"]]
+            'MGR_SSN' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'tableName' => 'EMPLOYEE', 'match' => 'Ssn']]
         ];
         parent::__construct($this->table);
     }
