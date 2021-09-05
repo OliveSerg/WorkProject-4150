@@ -159,6 +159,6 @@ class Query {
     }
 
     private function configureParamName($name) {
-        return ':' . end(explode('.', $name, 2));
+        return ':' . str_replace('.', '', $name);
     }
 }
