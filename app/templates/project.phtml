@@ -14,7 +14,7 @@ use \general\WebApp;
                     <div class="card-text mb-3">
                         <p><b>Project Number:</b>&emsp;<?= $project->Pnumber; ?></p>
                         <p><b>Location:</b>&emsp;<?= $project->Plocation; ?></p>
-                        <p><b>Departmen:</b>&emsp;<?= $project->Dnum; ?></p>
+                        <p><b>Department:</b>&emsp;<?= $project->Dnum; ?></p>
                         <p><b>Budget:</b>&emsp;$<?= rand(500, 100000) ?></p>
                     </div>
                     <a class="btn btn-primary" href="<?php echo WebApp::getUrlPath("/project/edit?Pnumber=" . $project->getData('Pnumber')); ?>">Update</a>

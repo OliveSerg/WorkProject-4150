@@ -1,0 +1,40 @@
+<?php
+
+use \general\WebApp;
+
+$manager = $department->getManager();
+?>
+<div class="department my-3">
+    <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+            <img src="https://via.placeholder.com/400x400/FFB6C1/000000" alt="department-image" class="rounded mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar<?= rand(1, 8); ?>.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                            <h4><?= $manager->getFullname(); ?></h4>
+                            <p class="text-secondary mb-1"><?= $manager->getData('Ssn'); ?></p>
+                            <p class="text-muted mb-1"><?= $manager->getData('Address'); ?></p>
+                            <p class="text-muted font-size-sm">Started <?= date('F j Y', strtotime($department->getData('MGR_START_DATE'))); ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $department->Dname; ?></h5>
+                    <p class="card-text">Vivamus pellentesque, felis in aliquam ullamcorper, lorem tortor porttitor erat, hendrerit porta nunc tellus eu lectus. Ut vel imperdiet est. Pellentesque condimentum, dui et blandit laoreet, quam nisi tincidunt tortor.</p>
+                    <div class="card-text mb-3">
+                        <p><b>Department Number:</b>&emsp;<?= $department->Dnumber; ?></p>
+                        <p><b>Budget:</b>&emsp;$<?= rand(100000, 1000000) ?></p>
+                        <p><b>Locations:</b>&emsp;<?php echo $department->getLocations() ? implode(', ', $department->getLocations()) : 'No Locations'; ?></p>
+                    </div>
+                    <a class="btn btn-primary" href="<?php echo WebApp::getUrlPath("/department/edit?Dnumber=" . $department->getData('Dnumber')); ?>">Update</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
