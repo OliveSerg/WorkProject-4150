@@ -89,14 +89,13 @@ class Query {
     private function _buildWhere() {
         if ($this->where) {
             $this->sql .= ' WHERE';
-
             foreach ($this->where as $clause) {
-                $varName = ':' . $clause['column'];
+                $varName = $this->configureParamName($clause['column']);
                 if ($clause['operator'] == 'IN' || $clause['operator'] == 'NOT IN') {
                     $varName = '(';
                     $i = 0;
                     foreach ($clause['value'] as $value) {
-                        $curName = ':' . $clause['column'] . $i++;
+                        $curName = $this->configureParamName($clause['column'] . $i++);
                         $this->params[$curName] = $value;
                         $varName .= $curName . ($i < count($clause['value']) ? ',' : '');
                     }
@@ -157,5 +156,9 @@ class Query {
     public function setType($type) {
         $this->sqlType = $type;
         return $this;
+    }
+
+    private function configureParamName($name) {
+        return ':' . end(explode('.', $name, 2));
     }
 }
